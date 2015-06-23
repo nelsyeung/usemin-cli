@@ -1,0 +1,15 @@
+{
+	"bitwise" : true,
+	"eqeqeq"  : true,
+	"forin"   : true,
+	"freeze"  : true,
+	"latedef" : false,
+	"mocha"   : true,
+	"noarg"   : true,
+	"node"    : true,
+	"nonbsp"  : true,
+	"strict"  : true,
+	"undef"   : true,
+	"unused"  : true,
+	"mocha"   : true
+}
