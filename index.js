@@ -26,7 +26,7 @@ if (process) {
 	if (argv.o) {
 		fs.writeFile(argv.o, output, function(err) {
 			if (err) {
-				return console.error(err);
+				throw Error(err);
 			}
 		});
 	}
@@ -35,5 +35,5 @@ if (process) {
 	}
 }
 else {
-	console.log('Unexpected error.');
+	throw Error('Unexpected error.');
 }

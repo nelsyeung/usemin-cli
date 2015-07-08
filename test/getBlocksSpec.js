@@ -10,6 +10,8 @@ describe('Get Blocks', function () {
 		var blocks = getBlocks(src, content);
 		var outcome = [
 			{
+				async: false,
+				defer: false,
 				type: 'js',
 				dest: 'js/main.js',
 				indent: '\t',
@@ -25,6 +27,27 @@ describe('Get Blocks', function () {
 					'\t<script src="js/controllers/test.js"></script>',
 					'\t<script src="js/models/test.js"></script>',
 					'\t<script src="js/views/test.js"></script>',
+					'\t<!-- endbuild -->'
+				]
+			},
+			{
+				async: true,
+				defer: true,
+				type: 'js',
+				dest: 'js/main.js',
+				indent: '\t',
+				src: [
+					'test/js/app.js',
+					'test/js/controllers/test.js',
+					'test/js/models/test.js',
+					'test/js/views/test.js'
+				],
+				raw: [
+					'\t<!-- build:js js/main.js -->',
+					'\t<script defer async src="js/app.js"></script>',
+					'\t<script defer async src="js/controllers/test.js"></script>',
+					'\t<script defer async src="js/models/test.js"></script>',
+					'\t<script defer async src="js/views/test.js"></script>',
 					'\t<!-- endbuild -->'
 				]
 			}
