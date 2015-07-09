@@ -12,6 +12,23 @@ describe('Get Blocks', function () {
 			{
 				async: false,
 				defer: false,
+				type: 'css',
+				dest: 'css/main.js',
+				indent: '\t',
+				src: [
+					'test/css/main.css',
+					'test/css/test.css',
+				],
+				raw: [
+					'\t<!-- build:css css/main.js -->',
+					'\t<link rel="stylesheet" href="css/main.css">',
+					'\t<link rel="stylesheet" href="css/test.css">',
+					'\t<!-- endbuild -->'
+				]
+			},
+			{
+				async: false,
+				defer: false,
 				type: 'js',
 				dest: 'js/main.js',
 				indent: '\t',
