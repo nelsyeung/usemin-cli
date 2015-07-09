@@ -1,4 +1,4 @@
-# usemin-cli
+# usemin-cli [![Build Status](https://travis-ci.org/nelsyeung/usemin-cli.svg?branch=master)](https://travis-ci.org/nelsyeung/usemin-cli)
 
 > CLI version of usemin. For _purists_, those who doesn't use build tools like Grunt and Gulp, but just use NPM as their build tool.
 
