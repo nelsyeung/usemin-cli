@@ -1,6 +1,6 @@
 {
   "name": "usemin-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Replaces references to non-optimized scripts or stylesheets into a set of HTML files (or any templates/views).",
   "main": "index.js",
   "bin": {
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/nelsyeung/usemin-cli#readme",
   "dependencies": {
     "clean-css": "^3.3.5",
+    "html-minifier": "^0.7.2",
     "mkdirp": "^0.5.1",
     "uglify-js": "^2.4.23",
     "yargs": "^3.12.0"

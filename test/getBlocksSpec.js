@@ -2,11 +2,11 @@
 var fs = require('fs');
 var expect = require('chai').expect;
 var getBlocks = require('../lib/getBlocks');
-var inputsDir = 'test/inputs/';
+var inputDir = 'test/files/';
 
 describe('Get Blocks', function () {
 	it('should get JS block', function () {
-		var src = inputsDir + 'js.html';
+		var src = inputDir + 'js.html';
 		var content = fs.readFileSync(src).toString();
 		var blocks = getBlocks(src, content);
 		var outcome = [
@@ -17,10 +17,10 @@ describe('Get Blocks', function () {
 				dest: 'js/main.js',
 				indent: '\t',
 				src: [
-					inputsDir + 'js/app.js',
-					inputsDir + 'js/models.js',
-					inputsDir + 'js/views.js',
-					inputsDir + 'js/controllers.js'
+					inputDir + 'js/app.js',
+					inputDir + 'js/models.js',
+					inputDir + 'js/views.js',
+					inputDir + 'js/controllers.js'
 				],
 				raw: [
 					'\t<!-- build:js js/main.js -->',
@@ -37,7 +37,7 @@ describe('Get Blocks', function () {
 	});
 
 	it('should get defer and async JS block', function () {
-		var src = './test/inputs/defer-async.html';
+		var src = inputDir + 'defer-async.html';
 		var content = fs.readFileSync(src).toString();
 		var blocks = getBlocks(src, content);
 		var outcome = [
@@ -48,10 +48,10 @@ describe('Get Blocks', function () {
 				dest: 'js/main.js',
 				indent: '\t',
 				src: [
-					inputsDir + 'js/app.js',
-					inputsDir + 'js/models.js',
-					inputsDir + 'js/views.js',
-					inputsDir + 'js/controllers.js'
+					inputDir + 'js/app.js',
+					inputDir + 'js/models.js',
+					inputDir + 'js/views.js',
+					inputDir + 'js/controllers.js'
 				],
 				raw: [
 					'\t<!-- build:js js/main.js -->',
@@ -68,7 +68,7 @@ describe('Get Blocks', function () {
 	});
 
 	it('should get CSS block', function () {
-		var src = './test/inputs/css.html';
+		var src = inputDir + 'css.html';
 		var content = fs.readFileSync(src).toString();
 		var blocks = getBlocks(src, content);
 		var outcome = [
@@ -79,14 +79,30 @@ describe('Get Blocks', function () {
 				dest: 'css/main.js',
 				indent: '\t',
 				src: [
-					inputsDir + 'css/main.css',
-					inputsDir + 'css/test.css',
+					inputDir + 'css/main.css',
+					inputDir + 'css/test.css',
 				],
 				raw: [
 					'\t<!-- build:css css/main.js -->',
 					'\t<link rel="stylesheet" href="css/main.css">',
 					'\t<link rel="stylesheet" href="css/test.css">',
 					'\t<!-- endbuild -->'
+				]
+			}
+		];
+
+		expect(blocks).to.eql(outcome);
+	});
+
+	it('should get livereload script', function () {
+		var src = inputDir + 'livereload.html';
+		var content = fs.readFileSync(src).toString();
+		var blocks = getBlocks(src, content, true);
+		var outcome = [
+			{
+				type: 'livereload',
+				raw: [
+					'\t<script>document.write(\'<script src="http://\' + (location.host || \'localhost\').split(\':\')[0] + \':35729/livereload.js?snipver=1"></\' + \'script>\')</script>'
 				]
 			}
 		];

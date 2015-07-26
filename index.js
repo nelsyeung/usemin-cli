@@ -1,13 +1,32 @@
 'use strict';
 var argv = require('yargs')
-	.usage('Usage: $0 [input.html] [--dest|-d dir] [--output|-o output.html]')
+	.usage('Usage: usemin [input.html] [--dest|-d dir] [--output|-o output.html] [options]')
 	.example('usemin src/index.html -d dist -o dist/index.html')
 	.example('usemin src/index.html -d dist > dist/index.html')
-	.alias('d', 'dest')
-	.describe('d', 'Output directory for compressed output files')
-	.demand('d', 'Please specify the output directory')
-	.alias('o', 'output')
-	.describe('o', 'HTML output file')
+	.options({
+		'd': {
+			alias: 'dest',
+			demand: 'Please specify the output directory',
+			describe: 'Output directory for compressed output files',
+			type: 'string'
+		},
+		'o': {
+			alias: 'output',
+			describe: 'HTML output file',
+			type: 'string'
+		},
+		'htmlmin': {
+			default: false,
+			describe: 'Also minifies the input HTML file',
+			type: 'boolean'
+		},
+		'rmlr': {
+			alias: 'removeLivereload',
+			default: false,
+			describe: 'Remove livereload script',
+			type: 'boolean'
+		}
+	})
 	.demand(1)
 	.argv;
 
@@ -18,9 +37,9 @@ var getHTML = require('./lib/getHTML');
 
 var filePath = argv._[0];
 var content = fs.readFileSync(filePath).toString();
-var blocks = getBlocks(argv._[0], content);
-var process = processBlocks(blocks, argv.d);
-var output = getHTML(content, blocks);
+var blocks = getBlocks(argv._[0], content, argv.removeLivereload);
+var process = processBlocks(blocks, argv.dest);
+var output = getHTML(content, blocks, argv.htmlmin);
 
 if (process) {
 	if (argv.o) {
