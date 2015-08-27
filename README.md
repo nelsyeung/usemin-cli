@@ -63,6 +63,13 @@ Running the command with `--rmlr true` will output:
 <script defer async src="js/main.js"></script>
 ```
 
+## What's being worked on
+This is still under development. Any contributions will be much appreciated.
+
+- Accept a single config file for clean-css, uglify-js and htmlmin
+- Filerev
+- Batch processing
+
 ## License
 
 [MIT license](http://opensource.org/licenses/MIT.php)
