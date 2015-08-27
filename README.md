@@ -34,6 +34,7 @@ usemin src/index.html -d dist -o dist/index.html --htmlmin true --rmlr true
 ```
 --htmlmin - Also minifies the input HTML file (Boolean)
 --rmlr, --removeLivereload - Remove livereload script (Boolean)
+--noprocess - Do not process files, just replace references (Boolean)
 ```
 
 ### Example HTML

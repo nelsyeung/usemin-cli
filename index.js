@@ -25,6 +25,11 @@ var argv = require('yargs')
 			default: false,
 			describe: 'Remove livereload script',
 			type: 'boolean'
+		},
+		'noprocess': {
+			default: false,
+			describe: 'Do not process files, just replace references',
+			type: 'boolean'
 		}
 	})
 	.demand(1)
@@ -38,7 +43,7 @@ var getHTML = require('./lib/getHTML');
 var filePath = argv._[0];
 var content = fs.readFileSync(filePath).toString();
 var blocks = getBlocks(argv._[0], content, argv.removeLivereload);
-var process = processBlocks(blocks, argv.dest);
+var process = (argv.noprocess === true) ? true : processBlocks(blocks, argv.dest);
 var output = getHTML(content, blocks, argv.htmlmin);
 
 if (process) {
