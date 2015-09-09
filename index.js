@@ -30,6 +30,11 @@ var argv = require('yargs')
 			default: false,
 			describe: 'Do not process files, just replace references',
 			type: 'boolean'
+		},
+		'c': {
+			alias: 'config',
+			describe: 'Config file for UglifyJS, CleanCSS and htmlmin',
+			type: 'string'
 		}
 	})
 	.demand(1)
@@ -37,14 +42,16 @@ var argv = require('yargs')
 
 var fs = require('fs');
 var getBlocks = require('./lib/getBlocks');
+var getConfig = require('./lib/getConfig');
 var processBlocks = require('./lib/processBlocks');
 var getHTML = require('./lib/getHTML');
 
 var filePath = argv._[0];
 var content = fs.readFileSync(filePath).toString();
 var blocks = getBlocks(argv._[0], content, argv.removeLivereload);
-var process = (argv.noprocess === true) ? true : processBlocks(blocks, argv.dest);
-var output = getHTML(content, blocks, argv.htmlmin);
+var config = getConfig(argv.c);
+var process = (argv.noprocess === true) ? true : processBlocks(blocks, argv.dest, config);
+var output = getHTML(content, blocks, argv.htmlmin, config);
 
 if (process) {
 	if (argv.o) {
