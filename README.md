@@ -28,6 +28,7 @@ usemin src/index.html --dest dist --output dist/index.html
 usemin src/index.html -d dist -o dist/index.html
 usemin src/index.html -d dist > dist/index.html
 usemin src/index.html -d dist -o dist/index.html --htmlmin true --rmlr true
+usemin src/index.html -d dist -o dist/index.html --htmlmin true -c config.js
 ```
 
 ### Available options
@@ -35,6 +36,7 @@ usemin src/index.html -d dist -o dist/index.html --htmlmin true --rmlr true
 --htmlmin - Also minifies the input HTML file (Boolean)
 --rmlr, --removeLivereload - Remove livereload script (Boolean)
 --noprocess - Do not process files, just replace references (Boolean)
+-c, --config - Supply a configurations file for UglifyJS, CleanCSS and HTML minifier.
 ```
 
 ### Example HTML
@@ -63,12 +65,30 @@ Running the command with `--rmlr true` will output:
 <script defer async src="js/main.js"></script>
 ```
 
+### Config file
+
+Please check the relevant documentations for the available options: [ UglifyJS](https://github.com/mishoo/UglifyJS2), [CleanCSS](https://github.com/jakubpawlowicz/clean-css) and [HTML minifier](https://github.com/kangax/html-minifier).
+
+```JavaScript
+module.exports = {
+	uglifyjs: {
+		// ... UglifyJS API options
+	},
+	cleancss: {
+		// ... CleanCSS API options
+	},
+	htmlminifier: {
+		// ... HTML minifier API options
+	}
+}
+```
+
 ## What's being worked on
 This is still under development. Any contributions will be much appreciated.
 
-- Accept a single config file for clean-css, uglify-js and htmlmin
 - Filerev
 - Batch processing
+- More and better tests
 
 ## License
 
