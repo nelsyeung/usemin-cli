@@ -62,7 +62,7 @@ if (process) {
 		});
 	}
 	else {
-		console.log(output);
+		console.log(output); // eslint-disable-line no-console
 	}
 }
 else {

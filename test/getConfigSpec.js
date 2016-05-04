@@ -29,7 +29,7 @@ describe('Get Config', function () {
 				removeScriptTypeAttributes: true,
 				removeStyleLinkTypeAttributes: true,
 				minifyJS: false,
-				minifyCSS: false,
+				minifyCSS: false
 			}
 		};
 
@@ -50,7 +50,7 @@ describe('Get Config', function () {
 				removeScriptTypeAttributes: true,
 				removeStyleLinkTypeAttributes: true,
 				minifyJS: true,
-				minifyCSS: true,
+				minifyCSS: true
 			}
 		};
 

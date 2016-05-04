@@ -20,6 +20,6 @@ module.exports = {
 		removeScriptTypeAttributes: true,
 		removeStyleLinkTypeAttributes: true,
 		minifyJS: false,
-		minifyCSS: false,
+		minifyCSS: false
 	}
 };

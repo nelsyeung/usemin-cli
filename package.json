@@ -7,7 +7,8 @@
     "usemin": "./bin/usemin"
   },
   "scripts": {
-    "test": "mocha"
+    "lint": "eslint .",
+    "test": "npm run lint && mocha"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^2.9.0",
     "mocha": "^2.4.5"
   }
 }

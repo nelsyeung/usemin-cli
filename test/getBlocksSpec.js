@@ -30,7 +30,7 @@ describe('Get Blocks', function () {
 					'\t<script src="js/controllers.js"></script>',
 					'\t<!-- endbuild -->'
 				]
-			},
+			}
 		];
 
 		expect(blocks).to.eql(outcome);
@@ -80,7 +80,7 @@ describe('Get Blocks', function () {
 				indent: '\t',
 				src: [
 					inputDir + 'css/main.css',
-					inputDir + 'css/test.css',
+					inputDir + 'css/test.css'
 				],
 				raw: [
 					'\t<!-- build:css css/main.css -->',
