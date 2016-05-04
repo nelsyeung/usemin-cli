@@ -2,7 +2,7 @@
 var fs = require('fs');
 var expect = require('chai').expect;
 var getBlocks = require('../lib/getBlocks');
-var inputDir = 'test/files/';
+var inputDir = 'test/fixtures/';
 
 describe('Get Blocks', function () {
 	it('should get JS block', function () {
@@ -76,14 +76,14 @@ describe('Get Blocks', function () {
 				async: false,
 				defer: false,
 				type: 'css',
-				dest: 'css/main.js',
+				dest: 'css/main.css',
 				indent: '\t',
 				src: [
 					inputDir + 'css/main.css',
 					inputDir + 'css/test.css',
 				],
 				raw: [
-					'\t<!-- build:css css/main.js -->',
+					'\t<!-- build:css css/main.css -->',
 					'\t<link rel="stylesheet" href="css/main.css">',
 					'\t<link rel="stylesheet" href="css/test.css">',
 					'\t<!-- endbuild -->'

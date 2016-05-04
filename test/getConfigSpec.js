@@ -1,7 +1,7 @@
 'use strict';
 var expect = require('chai').expect;
 var getConfig = require('../lib/getConfig');
-var inputDir = 'test/files/';
+var inputDir = 'test/fixtures/';
 
 describe('Get Config', function () {
 	it('should get configurations from file', function () {

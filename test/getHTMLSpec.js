@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 var getConfig = require('../lib/getConfig');
 var getBlocks = require('../lib/getBlocks');
 var getHTML = require('../lib/getHTML');
-var inputsDir = 'test/files/';
+var inputsDir = 'test/fixtures/';
 var config = getConfig(false);
 
 describe('Get HTML', function () {
