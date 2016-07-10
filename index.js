@@ -1,8 +1,8 @@
 'use strict';
 var argv = require('yargs')
 	.usage('Usage: usemin [input.html] [--dest|-d dir] [--output|-o output.html] [options]')
-	.example('usemin src/index.html -d dist -o dist/index.html')
-	.example('usemin src/index.html -d dist > dist/index.html')
+	.example('usemin src/index.html -d dist -o dist/index.html', '')
+	.example('usemin src/index.html -d dist > dist/index.html', '')
 	.options({
 		'd': {
 			alias: 'dest',
