@@ -16,18 +16,15 @@ describe('Get Blocks', function () {
 				type: 'js',
 				dest: 'js/main.js',
 				indent: '\t',
+				searchPath: [''],
 				src: [
-					inputDir + 'js/app.js',
-					inputDir + 'js/models.js',
-					inputDir + 'js/views.js',
-					inputDir + 'js/controllers.js'
+					inputDir + 'js/foo.js',
+					inputDir + 'js/bar.js',
 				],
 				raw: [
 					'\t<!-- build:js js/main.js -->',
-					'\t<script src="js/app.js"></script>',
-					'\t<script src="js/models.js"></script>',
-					'\t<script src="js/views.js"></script>',
-					'\t<script src="js/controllers.js"></script>',
+					'\t<script src="js/foo.js"></script>',
+					'\t<script src="js/bar.js"></script>',
 					'\t<!-- endbuild -->'
 				]
 			}
@@ -47,18 +44,15 @@ describe('Get Blocks', function () {
 				type: 'js',
 				dest: 'js/main.js',
 				indent: '\t',
+				searchPath: [''],
 				src: [
-					inputDir + 'js/app.js',
-					inputDir + 'js/models.js',
-					inputDir + 'js/views.js',
-					inputDir + 'js/controllers.js'
+					inputDir + 'js/foo.js',
+					inputDir + 'js/bar.js',
 				],
 				raw: [
 					'\t<!-- build:js js/main.js -->',
-					'\t<script defer async src="js/app.js"></script>',
-					'\t<script defer async src="js/models.js"></script>',
-					'\t<script defer async src="js/views.js"></script>',
-					'\t<script defer async src="js/controllers.js"></script>',
+					'\t<script defer async src="js/foo.js"></script>',
+					'\t<script defer async src="js/bar.js"></script>',
 					'\t<!-- endbuild -->'
 				]
 			}
@@ -78,14 +72,15 @@ describe('Get Blocks', function () {
 				type: 'css',
 				dest: 'css/main.css',
 				indent: '\t',
+				searchPath: [''],
 				src: [
-					inputDir + 'css/main.css',
-					inputDir + 'css/test.css'
+					inputDir + 'css/foo.css',
+					inputDir + 'css/bar.css'
 				],
 				raw: [
 					'\t<!-- build:css css/main.css -->',
-					'\t<link rel="stylesheet" href="css/main.css">',
-					'\t<link rel="stylesheet" href="css/test.css">',
+					'\t<link rel="stylesheet" href="css/foo.css">',
+					'\t<link rel="stylesheet" href="css/bar.css">',
 					'\t<!-- endbuild -->'
 				]
 			}
@@ -103,6 +98,36 @@ describe('Get Blocks', function () {
 				type: 'livereload',
 				raw: [
 					'\t<script>document.write(\'<script src="http://\' + (location.host || \'localhost\').split(\':\')[0] + \':35729/livereload.js?snipver=1"></\' + \'script>\')</script>'
+				]
+			}
+		];
+
+		expect(blocks).to.eql(outcome);
+	});
+
+	it('should get JS block with alternate search path', function () {
+		var src = inputDir + 'alt-search-path.html';
+		var content = fs.readFileSync(src).toString();
+		var blocks = getBlocks(src, content);
+		var outcome = [
+			{
+				async: false,
+				defer: false,
+				type: 'js',
+				dest: 'js/main.js',
+				indent: '\t',
+				searchPath: ['alt', 'alt2'],
+				src: [
+					inputDir + 'alt/foo.js',
+					inputDir + 'alt/bar.js',
+					inputDir + 'alt2/foobar.js',
+				],
+				raw: [
+					'\t<!-- build:js(alt,alt2) js/main.js -->',
+					'\t<script src="foo.js"></script>',
+					'\t<script src="bar.js"></script>',
+					'\t<script src="foobar.js"></script>',
+					'\t<!-- endbuild -->'
 				]
 			}
 		];
