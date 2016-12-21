@@ -40,6 +40,18 @@ usemin src/index.html -d dist -o dist/index.html --htmlmin true -c config.js
 ```
 
 ### Example HTML
+#### Blocks
+Blocks are expressed as:
+```html
+<!-- build:<pipelineId>(alternate search path) <path> -->
+... HTML Markup, list of script / link tags.
+<!-- endbuild -->
+```
+
+- **pipelineId**: pipeline id for options or remove to remove a section
+- **alternate search path**: (optional) By default the input files are relative to the treated file. Alternate search path allows one to change that
+- **path**: the file path of the optimized file, the target output
+
 ```html
 <!-- build:css css/main.js -->
 <link rel="stylesheet" href="css/main.css">
@@ -63,6 +75,19 @@ Running the command with `--rmlr true` will output:
 <link rel="stylesheet" href="css/main.js">
 <script src="js/main.js"></script>
 <script defer async src="js/main.js"></script>
+```
+
+#### Alternate search path
+```html
+<!-- build:js(js) js/main.js -->
+<script defer async src="app.js"></script>
+<script defer async src="controllers.js"></script>
+<!-- endbuild -->
+
+<!-- build:js(js,.tmp) js/main.js -->
+<script defer async src="app.js"></script>
+<script defer async src="controllers.js"></script>
+<!-- endbuild -->
 ```
 
 ### Config file
