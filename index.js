@@ -40,31 +40,14 @@ var argv = require('yargs')
 	.demand(1)
 	.argv;
 
-var fs = require('fs');
-var getBlocks = require('./lib/getBlocks');
-var getConfig = require('./lib/getConfig');
-var processBlocks = require('./lib/processBlocks');
-var getHTML = require('./lib/getHTML');
+var html = require('usemin')(argv._[0], argv.dest, {
+	output: argv.o,
+	configFile: argv.c,
+	htmlmin: argv.htmlmin,
+	noprocess: argv.noprocess,
+	removeLivereload: argv.removeLivereload,
+});
 
-var filePath = argv._[0];
-var content = fs.readFileSync(filePath).toString();
-var blocks = getBlocks(argv._[0], content, argv.removeLivereload);
-var config = getConfig(argv.c);
-var process = (argv.noprocess === true) ? true : processBlocks(blocks, argv.dest, config);
-var output = getHTML(content, blocks, argv.htmlmin, config);
-
-if (process) {
-	if (argv.o) {
-		fs.writeFile(argv.o, output, function(err) {
-			if (err) {
-				throw Error(err);
-			}
-		});
-	}
-	else {
-		console.log(output); // eslint-disable-line no-console
-	}
-}
-else {
-	throw Error('Unexpected error.');
+if (!argv.o) {
+	console.log(html);
 }

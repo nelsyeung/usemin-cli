@@ -1,14 +1,12 @@
 {
   "name": "usemin-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Replaces references to non-optimized scripts or stylesheets into a set of HTML files (or any templates/views).",
-  "main": "index.js",
   "bin": {
     "usemin": "./bin/usemin"
   },
   "scripts": {
-    "lint": "eslint .",
-    "test": "npm run lint && mocha"
+    "test": "eslint . && mocha"
   },
   "repository": {
     "type": "git",
@@ -27,15 +25,40 @@
   },
   "homepage": "https://github.com/nelsyeung/usemin-cli#readme",
   "dependencies": {
-    "clean-css": "^3.4.12",
-    "html-minifier": "^3.0.1",
-    "mkdirp": "^0.5.1",
-    "uglify-js": "^2.7.0",
-    "yargs": "^4.8.0"
+    "usemin": "^0.3.0",
+    "yargs": "^6.6.0"
   },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.0.1",
-    "mocha": "^2.5.3"
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "comma-dangle": [
+        "error",
+        "always"
+      ],
+      "brace-style": [
+        "error",
+        "1tbs"
+      ]
+    }
   }
 }

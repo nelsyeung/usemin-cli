@@ -1,21 +1,16 @@
-# usemin-cli [![Build Status](https://travis-ci.org/nelsyeung/usemin-cli.svg?branch=master)](https://travis-ci.org/nelsyeung/usemin-cli)
+# usemin-cli [![Build Status](https://travis-ci.org/nelsyeung/usemin.svg?branch=master)](https://travis-ci.org/nelsyeung/usemin)
 
 > CLI version of usemin. For _purists_, those who doesn't use build tools like [Grunt](https://github.com/yeoman/grunt-usemin) and [Gulp](https://github.com/zont/gulp-usemin), but just use NPM as their build tool.
 
 ## Getting started
 
-To use this now, install with this command:
+Install with NPM:
 ```
 npm install usemin-cli
 ```
 
-From GitHub
-```
-git clone https://github.com/nelsyeung/usemin-cli.git
-cd usemin-cli
-npm install
-npm link
-```
+## API
+[usemin](https://github.com/nelsyeung/usemin) - API for this module.
 
 ## Usage
 
@@ -107,13 +102,6 @@ module.exports = {
 	}
 }
 ```
-
-## What's being worked on
-This is still under development. Any contributions will be much appreciated.
-
-- Filerev
-- Batch processing
-- More and better tests
 
 ## License
 
