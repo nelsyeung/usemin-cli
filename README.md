@@ -63,6 +63,11 @@ Blocks are expressed as:
 <script defer async src="js/controllers.js"></script>
 <!-- endbuild -->
 
+<!-- build:remove -->
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<!-- endbuild -->
+
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 ```
 Running the command with `--rmlr true` will output:
