@@ -1,6 +1,6 @@
 {
   "name": "usemin-cli",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Replaces references to non-optimized scripts or stylesheets into a set of HTML files (or any templates/views).",
   "bin": {
     "usemin": "./bin/usemin"
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/nelsyeung/usemin-cli#readme",
   "dependencies": {
-    "usemin": "^0.4.2",
+    "usemin": "^0.4.3",
     "yargs": "^6.6.0"
   },
   "eslintConfig": {
