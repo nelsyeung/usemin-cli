@@ -39,7 +39,7 @@ var argv = require('yargs')
 		'listblocks': {
 			default: 'false',
 			describe: ('Write blocks to stdout or filename.json.\n' +
-				'E.g., --listblocks stdout\n.' +
+				'E.g., --listblocks\n.' +
 				'     --listblocks blocks.json'),
 			type: 'string'
 		}
