@@ -37,6 +37,7 @@ var argv = require('yargs')
 			type: 'string'
 		},
 		'listblocks': {
+			default: 'false',
 			describe: ('Write blocks to stdout or filename.json.\n' +
 				'E.g., --listblocks stdout\n.' +
 				'     --listblocks blocks.json'),
@@ -56,12 +57,12 @@ var html = usemin(argv._[0], argv.dest, {
 	removeLivereload: argv.removeLivereload,
 });
 
-if (argv.listblocks) {
+if (argv.listblocks !== 'false') {
 	var content = fs.readFileSync(argv._[0]).toString();
 	var blocks = JSON.stringify(usemin.getBlocks(argv._[0], content, argv.removeLivereload),
 		null, '  ');
 
-	if (argv.listblocks === 'stdout') {
+	if (argv.listblocks === '') {
 		console.log(blocks);
 	} else {
 		fs.writeFile(argv.listblocks, blocks, function (err) {

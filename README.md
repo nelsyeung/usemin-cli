@@ -33,8 +33,8 @@ usemin src/index.html -d dist -o dist/index.html --htmlmin true -c config.js
 --noprocess - Do not process files, just replace references (Boolean)
 -c, --config - Supply a configurations file for UglifyJS, CleanCSS and HTML minifier.
 --listblocks - Write blocks to stdout or filename.json.
-               E.g., --listblocks stdout
-                     --listblocks blocks.json
+               E.g., --listblocks // print to stdout
+                     --listblocks blocks.json // write to blocks.json
 ```
 
 ### Example HTML
