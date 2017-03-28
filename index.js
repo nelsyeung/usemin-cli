@@ -35,18 +35,42 @@ var argv = require('yargs')
 			alias: 'config',
 			describe: 'Config file for UglifyJS, CleanCSS and htmlmin',
 			type: 'string'
+		},
+		'listblocks': {
+			describe: ('Write blocks to stdout or filename.json.\n' +
+				'E.g., --listblocks stdout\n.' +
+				'     --listblocks blocks.json'),
+			type: 'string'
 		}
 	})
 	.demand(1)
 	.argv;
+var fs = require('fs');
+var usemin = require('usemin');
 
-var html = require('usemin')(argv._[0], argv.dest, {
+var html = usemin(argv._[0], argv.dest, {
 	output: argv.o,
 	configFile: argv.c,
 	htmlmin: argv.htmlmin,
 	noprocess: argv.noprocess,
 	removeLivereload: argv.removeLivereload,
 });
+
+if (argv.listblocks) {
+	var content = fs.readFileSync(argv._[0]).toString();
+	var blocks = JSON.stringify(usemin.getBlocks(argv._[0], content, argv.removeLivereload),
+		null, '  ');
+
+	if (argv.listblocks === 'stdout') {
+		console.log(blocks);
+	} else {
+		fs.writeFile(argv.listblocks, blocks, function (err) {
+				if (err) {
+					return console.error(err);
+				}
+			});
+	}
+}
 
 if (!argv.o) {
 	console.log(html);
