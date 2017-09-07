@@ -1,4 +1,8 @@
-# usemin-cli [![Build Status](https://travis-ci.org/nelsyeung/usemin.svg?branch=master)](https://travis-ci.org/nelsyeung/usemin)
+# usemin-cli 
+
+[![Build Status](https://travis-ci.org/nelsyeung/usemin.svg?branch=master)](https://travis-ci.org/nelsyeung/usemin)
+[![NPM Version](https://img.shields.io/npm/v/usemin-cli.svg)](https://www.npmjs.com/package/usemin-cli)
+[![Downloads per Month](https://img.shields.io/npm/dm/usemin-cli.svg)](https://www.npmjs.com/package/usemin-cli)
 
 > CLI version of usemin. For _purists_, those who doesn't use build tools like [Grunt](https://github.com/yeoman/grunt-usemin) and [Gulp](https://github.com/zont/gulp-usemin), but just use NPM as their build tool.
 
