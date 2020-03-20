@@ -8,41 +8,41 @@ var argv = require('yargs')
 			alias: 'dest',
 			demand: 'Please specify the output directory',
 			describe: 'Output directory for compressed output files',
-			type: 'string'
+			type: 'string',
 		},
 		'o': {
 			alias: 'output',
 			describe: 'HTML output file',
-			type: 'string'
+			type: 'string',
 		},
 		'htmlmin': {
 			default: false,
 			describe: 'Also minifies the input HTML file',
-			type: 'boolean'
+			type: 'boolean',
 		},
 		'rmlr': {
 			alias: 'removeLivereload',
 			default: false,
 			describe: 'Remove livereload script',
-			type: 'boolean'
+			type: 'boolean',
 		},
 		'noprocess': {
 			default: false,
 			describe: 'Do not process files, just replace references',
-			type: 'boolean'
+			type: 'boolean',
 		},
 		'c': {
 			alias: 'config',
 			describe: 'Config file for UglifyJS, CleanCSS and htmlmin',
-			type: 'string'
+			type: 'string',
 		},
 		'listblocks': {
 			default: 'false',
 			describe: ('Write blocks to stdout or filename.json.\n' +
 				'E.g., --listblocks\n.' +
 				'     --listblocks blocks.json'),
-			type: 'string'
-		}
+			type: 'string',
+		},
 	})
 	.demand(1)
 	.argv;
@@ -66,10 +66,10 @@ if (argv.listblocks !== 'false') {
 		console.log(blocks);
 	} else {
 		fs.writeFile(argv.listblocks, blocks, function (err) {
-				if (err) {
-					return console.error(err);
-				}
-			});
+			if (err) {
+				return console.error(err);
+			}
+		});
 	}
 }
 

@@ -1,12 +1,12 @@
 {
   "name": "usemin-cli",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Replaces references to non-optimized scripts or stylesheets into a set of HTML files (or any templates/views).",
   "bin": {
     "usemin": "./bin/usemin"
   },
   "scripts": {
-    "test": "eslint . && mocha"
+    "test": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,8 @@
   },
   "keywords": [
     "usemin",
-    "html", "css",
+    "html",
+    "css",
     "optimize"
   ],
   "author": "Nelson Yeung (http://nelsyeung.com)",
@@ -24,13 +25,15 @@
   },
   "homepage": "https://github.com/nelsyeung/usemin-cli#readme",
   "dependencies": {
-    "usemin": "^0.4.3",
+    "usemin": "^0.6.0",
     "yargs": "^6.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
   },
   "eslintConfig": {
     "env": {
-      "node": true,
-      "mocha": true
+      "node": true
     },
     "extends": "eslint:recommended",
     "rules": {
